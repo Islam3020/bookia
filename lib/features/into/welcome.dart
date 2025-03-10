@@ -36,7 +36,7 @@ class Welcome extends StatelessWidget {
               CustomButton(
                 text: 'Login',
                 onPressed: () {
-                  context.pushTo(LoginView());
+                  context.pushTo(const LoginView());
                 },
               ),
               const SizedBox(height: 20,),
@@ -45,7 +45,7 @@ class Welcome extends StatelessWidget {
                 bgColor: AppColors.backgroundColor,
                 text: 'Register',
                 onPressed: () {
-                  context.pushTo(RegisterView());
+                  context.pushTo(const RegisterView());
                 },
               ),
               

@@ -74,11 +74,11 @@ class _OTPVerificationState extends State<OTPVerification> {
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                                 borderSide:
-                                    BorderSide(color: AppColors.primaryColor)),
+                                    const BorderSide(color: AppColors.primaryColor)),
                             focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                                 borderSide:
-                                    BorderSide(color: AppColors.primaryColor))),
+                                    const BorderSide(color: AppColors.primaryColor))),
                         onChanged: (value) {
                           if (value.isNotEmpty && index < 3) {
                             FocusScope.of(context).nextFocus();
