@@ -66,7 +66,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   text: 'Send Code',
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      context.pushReplacement(OTPVerification());
+                      context.pushReplacement(const OTPVerification());
                     }
                   },
                 ),

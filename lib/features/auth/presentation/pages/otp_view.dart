@@ -1,7 +1,9 @@
 import 'package:bookia/core/utils/app_colors.dart';
+import 'package:bookia/core/utils/text_styles.dart';
 import 'package:bookia/core/widgets/custom_buttons.dart';
 import 'package:bookia/core/widgets/pop_container.dart';
 import 'package:flutter/material.dart';
+import 'package:pinput/pinput.dart';
 
 class OTPVerification extends StatefulWidget {
   const OTPVerification({super.key});
@@ -12,18 +14,21 @@ class OTPVerification extends StatefulWidget {
 
 class _OTPVerificationState extends State<OTPVerification> {
   final _formKey = GlobalKey<FormState>();
-  final List<TextEditingController> _controllers =
-      List.generate(4, (index) => TextEditingController());
+  final TextEditingController _otpController = TextEditingController();
 
   void _verifyOTP() {
-    String otp = _controllers.map((controller) => controller.text).join();
+    String otp = _otpController.text;
     print("Entered OTP: $otp");
-    // Implement OTP verification logic here
+    
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const PopContainer(),
+        automaticallyImplyLeading: false,
+      ),
       body: SafeArea(
         child: Form(
           key: _formKey,
@@ -32,65 +37,51 @@ class _OTPVerificationState extends State<OTPVerification> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
-                  height: 20,
-                ),
-                const Row(
-                  children: [
-                    PopContainer(),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
+               
+                const SizedBox(height: 20),
                 const Text(
                   'OTP Verification',
                   style: TextStyle(fontWeight: FontWeight.w400, fontSize: 30),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
+                const SizedBox(height: 10),
                 const Text(
                   'Enter the verification code we just sent on your email address.',
                   style: TextStyle(fontSize: 15, color: Colors.grey),
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: List.generate(4, (index) {
-                    return SizedBox(
-                      width: 65,
-                      child: TextFormField(
-                        cursorColor: AppColors.primaryColor,
-                        controller: _controllers[index],
-                        keyboardType: TextInputType.number,
-                        textAlign: TextAlign.center,
-                        maxLength: 1,
-                        style: const TextStyle(fontSize: 20),
-                        decoration: InputDecoration(
-                            counterText: "",
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide:
-                                    const BorderSide(color: AppColors.primaryColor)),
-                            focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide:
-                                    const BorderSide(color: AppColors.primaryColor))),
-                        onChanged: (value) {
-                          if (value.isNotEmpty && index < 3) {
-                            FocusScope.of(context).nextFocus();
-                          }
-                        },
+                const SizedBox(height: 25),
+                
+                
+                Row(mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Pinput(
+                      length: 4,
+                      controller: _otpController,
+                      keyboardType: TextInputType.number,
+                      defaultPinTheme: PinTheme(margin: EdgeInsets.symmetric(horizontal: 8),
+                        width: 70,
+                        height: 60,
+                        textStyle: getTitleTextStyle(context),
+                        decoration: BoxDecoration(
+                          color: AppColors.accentColor,
+                          border: Border.all(color: AppColors.borderColor),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
                       ),
-                    );
-                  }),
+                      focusedPinTheme: PinTheme(margin: EdgeInsets.symmetric(horizontal: 8),
+                        width: 70,
+                        height: 60,
+                        textStyle: getTitleTextStyle(context),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: AppColors.primaryColor, width: 2),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      onCompleted: (otp) => _verifyOTP(),
+                    ),
+                  ],
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
+
+                const SizedBox(height: 20),
                 CustomButton(
                   text: 'Verify',
                   onPressed: _verifyOTP,
@@ -99,13 +90,13 @@ class _OTPVerificationState extends State<OTPVerification> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text('Didn’t received code?'),
+                    const Text('Didn’t receive code?'),
                     TextButton(
-                        onPressed: () {},
-                        child: const Text('Resend',
-                            style: TextStyle(color: Color(0xffBFA054))))
+                      onPressed: () {},
+                      child: const Text('Resend', style: TextStyle(color: Color(0xffBFA054))),
+                    ),
                   ],
-                )
+                ),
               ],
             ),
           ),
