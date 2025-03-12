@@ -1,11 +1,13 @@
-
+import 'package:bookia/core/extension/extensions.dart';
+import 'package:bookia/core/utils/app_colors.dart';
+import 'package:bookia/core/utils/text_styles.dart';
 import 'package:bookia/core/widgets/custom_buttons.dart';
 import 'package:bookia/core/widgets/pop_container.dart';
 import 'package:bookia/features/auth/presentation/pages/forgot_password.dart';
 import 'package:bookia/features/auth/presentation/pages/register_view.dart';
-import 'package:bookia/features/auth/presentation/widgets/custom_text_form_field.dart';
 import 'package:bookia/features/auth/presentation/widgets/login_ways.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -21,33 +23,28 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Form(
-            key: _formKey,
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: const PopContainer(),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(22.0),
+        child: Form(
+          key: _formKey,
+          child: SingleChildScrollView(
             child: Column(
               children: [
-                const SizedBox(
-                  height: 20,
-                ),
-                const Row(
-                  children: [
-                    PopContainer(),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Text(
+                Text(
                   'Welcome back! Glad to see you, Again!',
-                  style: TextStyle(fontWeight: FontWeight.w400, fontSize: 30),
+                  style: getHeadLineTextStyle(context),
                 ),
                 const SizedBox(
                   height: 20,
                 ),
-                CustomTextFormField(
-                  hintText: 'Enter your email',
+                TextFormField(
+                  decoration: const InputDecoration(
+                    hintText: 'Enter your email',
+                  ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your email';
@@ -56,28 +53,26 @@ class _LoginViewState extends State<LoginView> {
                   },
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 15,
                 ),
                 TextFormField(
                   obscureText: obscureText,
                   decoration: InputDecoration(
-                      filled: true,
-                      fillColor: const Color(0xffE8ECF4),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide.none,
-                      ),
-                      suffixIcon: IconButton(
-                          onPressed: () {
-                            setState(() {
-                              obscureText = !obscureText;
-                            });
-                          },
-                          icon: Icon(obscureText
-                              ? Icons.visibility
-                              : Icons.visibility_off)),
-                      hintText: 'Enter your password',
-                      hintStyle: const TextStyle(color: Colors.grey)),
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          obscureText = !obscureText;
+                        });
+                      },
+                      icon: obscureText
+                          ? SvgPicture.asset('assets/icons/eye.svg')
+                          : const Icon(
+                              Icons.visibility_off,
+                              color: AppColors.greyColor,
+                            ),
+                    ),
+                    hintText: 'Enter your password',
+                  ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your password';
@@ -90,17 +85,16 @@ class _LoginViewState extends State<LoginView> {
                   children: [
                     TextButton(
                         onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) =>const  ForgotPassword()));
+                          context.pushTo(const ForgotPassword());
                         },
-                        child: const Text(
+                        child: Text(
                           'Forgot Password?',
-                          style: TextStyle(color: Colors.grey),
+                          style: getSmallTextStyle(),
                         ))
                   ],
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 60,
                 ),
                 CustomButton(
                   text: 'Login',
@@ -111,24 +105,33 @@ class _LoginViewState extends State<LoginView> {
                   },
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 35,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      width: 120,
-                      height: 1,
-                      decoration: const BoxDecoration(color: Color(0xffE8ECF4)),
+                    Expanded(
+                      child: Container(
+                        
+                        height: 1,
+                        decoration:
+                            const BoxDecoration(color: AppColors.borderColor),
+                      ),
                     ),
-                    const Text(
-                      'Or Login with',
-                      style: TextStyle(color: Colors.grey),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal:8.0),
+                      child: Text(
+                        'Or Login with',
+                        style: getSmallTextStyle(color: AppColors.darkColor),
+                      ),
                     ),
-                    Container(
-                      width: 120,
-                      height: 1,
-                      decoration: const BoxDecoration(color: Color(0xffE8ECF4)),
+                    Expanded(
+                      child: Container(
+                        
+                        height: 1,
+                        decoration:
+                            const BoxDecoration(color: AppColors.borderColor),
+                      ),
                     ),
                   ],
                 ),
@@ -139,29 +142,32 @@ class _LoginViewState extends State<LoginView> {
                 const SizedBox(
                   height: 40,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'Don\'t have an account?',
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const RegisterView()));
-                      },
-                      child: const Text(
-                        'Register now',
-                        style: TextStyle(color: Color(0xffBFA054)),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+                 ],
             ),
           ),
         ),
+      ),bottomNavigationBar: SafeArea(
+        child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Don\'t have an account?',
+                          style: getBodyTextStyle(context),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            context.pushReplacement(const RegisterView());
+                          },
+                          child: Text(
+                            'Register now',
+                            style: getBodyTextStyle(context,
+                                color: AppColors.primaryColor),
+                          ),
+                        ),
+                      ],
+                    ),
       ),
+               
     );
   }
 }

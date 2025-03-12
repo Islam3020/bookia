@@ -1,4 +1,5 @@
 import 'package:bookia/core/utils/app_colors.dart';
+import 'package:bookia/core/utils/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -28,7 +29,7 @@ class CustomTextFormField extends StatelessWidget {
              borderSide: const BorderSide(color: AppColors.primaryColor)
           ),
           hintText: hintText,
-          hintStyle:  const TextStyle(color: AppColors.greyColor)),
+          hintStyle:  getSmallTextStyle(),),
       validator: validator,
     );
   }

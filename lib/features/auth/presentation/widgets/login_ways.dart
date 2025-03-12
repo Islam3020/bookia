@@ -1,8 +1,8 @@
-
 import 'package:bookia/core/constants/assets_manager.dart';
 import 'package:bookia/features/auth/presentation/widgets/login_way_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gap/gap.dart';
 
 class LoginWays extends StatelessWidget {
   const LoginWays({
@@ -11,17 +11,18 @@ class LoginWays extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return   Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         LoginWayItem(
-          widget: SvgPicture.asset(AssetsManager.facebook),
+          widget: SvgPicture.asset(
+            AssetsManager.facebook,
+          ),
         ),
-        LoginWayItem(
-            widget:
-                SvgPicture.asset(AssetsManager.apple)),
-        LoginWayItem(
-          widget: SvgPicture.asset(AssetsManager.apple)
-        ),
+        const Gap(15),
+        LoginWayItem(widget: SvgPicture.asset(AssetsManager.google)),
+        const Gap(15),
+        LoginWayItem(widget: SvgPicture.asset(AssetsManager.apple)),
       ],
     );
   }

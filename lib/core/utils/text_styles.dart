@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 
 TextStyle getHeadLineTextStyle(BuildContext context,
-    {double? fontSize, Color? color, FontWeight? fontWeight}) {
+    {double? fontSize, Color? color, }) {
   return TextStyle(
     fontFamily: AppFonts.fontFamily,
     fontSize: fontSize ?? 30,
@@ -14,7 +14,7 @@ TextStyle getHeadLineTextStyle(BuildContext context,
   );
 }
 TextStyle getTitleTextStyle(BuildContext context,
-    {double? fontSize, Color? color, FontWeight? fontWeight}) {
+    {double? fontSize, Color? color, }) {
   return TextStyle(
     fontFamily: AppFonts.fontFamily,
     fontSize: fontSize ?? 24,
@@ -24,7 +24,7 @@ TextStyle getTitleTextStyle(BuildContext context,
 }
 
 TextStyle getBodyTextStyle(BuildContext context,
-    {double? fontSize, Color? color, FontWeight? fontWeight}) {
+    {double? fontSize, Color? color, }) {
   return TextStyle(
     fontFamily: AppFonts.fontFamily,
     fontSize: fontSize ?? 18,
@@ -34,7 +34,7 @@ TextStyle getBodyTextStyle(BuildContext context,
 }
 
 TextStyle getSmallTextStyle(
-    {double? fontSize, Color? color, FontWeight? fontWeight}) {
+    {double? fontSize, Color? color, }) {
   return TextStyle(
     fontFamily:AppFonts.fontFamily,
     fontSize: fontSize ?? 14,

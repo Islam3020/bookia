@@ -7,6 +7,7 @@ class AssetsManager {
   static const String category = "assets/icons/Category.svg";
   static const String eye = "assets/icons/eye.svg";
   static const String facebook = "assets/icons/facebook_ic.svg";
+  static const String google = "assets/icons/google_ic.svg";
   static const String home = "assets/icons/Home.svg";
   static const String notification = "assets/icons/notification.svg";
   static const String profile = "assets/icons/Profile.svg";

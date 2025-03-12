@@ -10,12 +10,15 @@ class LoginWayItem extends StatelessWidget {
   final Widget? widget;
   @override
   Widget build(BuildContext context) {
-    return Container(
-        width: 105,
-        height: 56,
-        decoration: BoxDecoration(
-            border: Border.all(color: AppColors.borderColor),
-            borderRadius: BorderRadius.circular(16)),
-        child: widget);
+    return Expanded(
+      child: Container(
+          
+          height: 56,
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+              border: Border.all(color: AppColors.borderColor),
+              borderRadius: BorderRadius.circular(8)),
+          child: widget),
+    );
   }
 }
