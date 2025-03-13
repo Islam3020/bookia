@@ -1,7 +1,10 @@
+import 'package:bookia/core/extension/extensions.dart';
 import 'package:bookia/core/utils/app_colors.dart';
 import 'package:bookia/core/utils/text_styles.dart';
 import 'package:bookia/core/widgets/custom_buttons.dart';
 import 'package:bookia/core/widgets/pop_container.dart';
+import 'package:bookia/features/auth/presentation/pages/cereate_new_password_screen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
@@ -17,8 +20,8 @@ class _OTPVerificationState extends State<OTPVerification> {
   final TextEditingController _otpController = TextEditingController();
 
   void _verifyOTP() {
-    String otp = _otpController.text;
-    print("Entered OTP: $otp");
+   // String otp = _otpController.text;
+    
     
   }
 
@@ -57,7 +60,7 @@ class _OTPVerificationState extends State<OTPVerification> {
                       length: 4,
                       controller: _otpController,
                       keyboardType: TextInputType.number,
-                      defaultPinTheme: PinTheme(margin: EdgeInsets.symmetric(horizontal: 8),
+                      defaultPinTheme: PinTheme(margin: const EdgeInsets.symmetric(horizontal: 8),
                         width: 70,
                         height: 60,
                         textStyle: getTitleTextStyle(context),
@@ -67,7 +70,7 @@ class _OTPVerificationState extends State<OTPVerification> {
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),
-                      focusedPinTheme: PinTheme(margin: EdgeInsets.symmetric(horizontal: 8),
+                      focusedPinTheme: PinTheme(margin: const EdgeInsets.symmetric(horizontal: 8),
                         width: 70,
                         height: 60,
                         textStyle: getTitleTextStyle(context),
@@ -84,7 +87,10 @@ class _OTPVerificationState extends State<OTPVerification> {
                 const SizedBox(height: 20),
                 CustomButton(
                   text: 'Verify',
-                  onPressed: _verifyOTP,
+                  onPressed: (){
+                    _verifyOTP();
+                    context.pushTo(const CereateNewPasswordScreen());
+                  },
                 ),
                 const Spacer(),
                 Row(
