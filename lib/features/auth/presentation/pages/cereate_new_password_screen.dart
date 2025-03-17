@@ -9,16 +9,20 @@ class CereateNewPasswordScreen extends StatefulWidget {
   const CereateNewPasswordScreen({super.key});
 
   @override
-  State<CereateNewPasswordScreen> createState() => _CereateNewPasswordScreenState();
+  State<CereateNewPasswordScreen> createState() =>
+      _CereateNewPasswordScreenState();
 }
 
 class _CereateNewPasswordScreenState extends State<CereateNewPasswordScreen> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      appBar: AppBar(title: const PopContainer(),automaticallyImplyLeading: false, ),
-      body:SafeArea(
+    return Scaffold(
+      appBar: AppBar(
+        title: const PopContainer(),
+        automaticallyImplyLeading: false,
+      ),
+      body: SafeArea(
         child: Form(
           key: _formKey,
           child: Padding(
@@ -44,8 +48,7 @@ class _CereateNewPasswordScreenState extends State<CereateNewPasswordScreen> {
                   height: 20,
                 ),
                 TextFormField(
-                  decoration:
-                      const InputDecoration(hintText: 'New Password'),
+                  decoration: const InputDecoration(hintText: 'New Password'),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your password';
@@ -73,18 +76,16 @@ class _CereateNewPasswordScreenState extends State<CereateNewPasswordScreen> {
                   text: 'Reset Password',
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                     // context.pushReplacement(const OTPVerification());
-                     context.pushReplacement(const PasswordChanged());
+                      // context.pushReplacement(const OTPVerification());
+                      context.pushReplacement(const PasswordChanged());
                     }
                   },
                 ),
-                
               ],
             ),
           ),
         ),
       ),
-     
     );
   }
 }

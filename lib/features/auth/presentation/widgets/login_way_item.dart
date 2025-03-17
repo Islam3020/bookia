@@ -1,4 +1,3 @@
-
 import 'package:bookia/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +11,6 @@ class LoginWayItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-          
           height: 56,
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(

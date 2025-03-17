@@ -1,3 +1,3 @@
 class AppFonts {
-  static  String fontFamily= 'DM Serif Display';
+  static String fontFamily = 'DM Serif Display';
 }

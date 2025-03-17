@@ -12,22 +12,32 @@ class PasswordChanged extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(22.0),
-          child: Column(mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset( AssetsManager.successmark),
-            const Gap(10),
-            Text("Password Changed!",style: getTitleTextStyle(context),),
-            const Gap(10),
-            Text("Your password has been changed successfully.",style: getSmallTextStyle(),),
-            const Gap(20),
-            CustomButton(text: "Back to Login", onPressed: (){
-              context.pushReplacement(const LoginView());
-            })
-          ],),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset(AssetsManager.successmark),
+              const Gap(10),
+              Text(
+                "Password Changed!",
+                style: getTitleTextStyle(context),
+              ),
+              const Gap(10),
+              Text(
+                "Your password has been changed successfully.",
+                style: getSmallTextStyle(),
+              ),
+              const Gap(20),
+              CustomButton(
+                  text: "Back to Login",
+                  onPressed: () {
+                    context.pushReplacement(const LoginView());
+                  })
+            ],
+          ),
         ),
       ),
     );

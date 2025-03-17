@@ -15,32 +15,40 @@ class Welcome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       body: Container(
         width: double.infinity,
         height: double.infinity,
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage(AssetsManager.bgimage),
-                fit: BoxFit.cover)),
+                image: AssetImage(AssetsManager.bgimage), fit: BoxFit.cover)),
         child: Padding(
-          padding: const EdgeInsets.only(left: 22.0,right: 22,top: 135,bottom: 100),
+          padding: const EdgeInsets.only(
+              left: 22.0, right: 22, top: 135, bottom: 100),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SvgPicture.asset(AssetsManager.logo,width: 200,),
-            const Gap(10),
-            Text("Order your Book Now!",
-             style: getBodyTextStyle(context),),
-              const   Spacer(),
+              SvgPicture.asset(
+                AssetsManager.logo,
+                width: 200,
+              ),
+              const Gap(10),
+              Text(
+                "Order your Book Now!",
+                style: getBodyTextStyle(context),
+              ),
+              const Spacer(),
               CustomButton(
                 text: 'Login',
                 onPressed: () {
                   context.pushTo(const LoginView());
                 },
               ),
-              const SizedBox(height: 20,),
-              CustomButton(hasBorder: true,
+              const SizedBox(
+                height: 20,
+              ),
+              CustomButton(
+                hasBorder: true,
                 fgColor: AppColors.darkColor,
                 bgColor: AppColors.backgroundColor,
                 text: 'Register',
@@ -48,12 +56,10 @@ class Welcome extends StatelessWidget {
                   context.pushTo(const RegisterView());
                 },
               ),
-              
-              ],
+            ],
           ),
         ),
       ),
-    
     );
   }
 }
