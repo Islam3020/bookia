@@ -1,6 +1,7 @@
 import 'package:bookia/core/constants/assets_manager.dart';
 import 'package:bookia/core/utils/app_colors.dart';
 import 'package:bookia/features/home/presentation/pages/home_view.dart';
+import 'package:bookia/features/profile/presentation/pages/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -16,7 +17,7 @@ class _MainViewState extends State<MainView> {
     const HomeView(),
     const HomeView(),
     const HomeView(),
-    const HomeView(),
+    const ProfileView(),
   ];
   int currentIndex = 0;
   @override
