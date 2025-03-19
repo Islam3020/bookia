@@ -1,6 +1,5 @@
 import 'package:bookia/core/constants/assets_manager.dart';
 import 'package:bookia/core/utils/app_colors.dart';
-import 'package:bookia/core/utils/text_styles.dart';
 import 'package:bookia/core/widgets/custom_buttons.dart';
 import 'package:bookia/core/widgets/pop_container.dart';
 import 'package:flutter/material.dart';
@@ -61,7 +60,7 @@ class EditProfile extends StatelessWidget {
             const Spacer(
               flex: 3,
             ),
-            CustomButton(text: "Update Password", onPressed: () {})
+            CustomButton(text: "Update Profile", onPressed: () {})
           ],
         ),
       ),
