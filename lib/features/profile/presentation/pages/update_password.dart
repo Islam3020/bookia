@@ -21,18 +21,18 @@ class UpdatePassword extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Gap(15),
+            const Gap(15),
             Text(
               "New Password",
               style: getHeadLineTextStyle(context),
             ),
             const Spacer(flex: 1,),
             TextFormField(
-              decoration: InputDecoration(hintText: 'Current password'),
+              decoration: const InputDecoration(hintText: 'Current password'),
             ),
             const Gap(30),
             TextFormField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: 'Confirm password',
               ),
             ),
@@ -48,7 +48,7 @@ class UpdatePassword extends StatelessWidget {
                 ),
               ),
             ),
-            Spacer(flex: 3,),
+            const Spacer(flex: 3,),
             CustomButton(text: "Update Password", onPressed: (){})
           ],
         ),

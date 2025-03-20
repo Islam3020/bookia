@@ -16,7 +16,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pinput/pinput.dart';
 
 class OTPVerification extends StatefulWidget {
-  const OTPVerification({super.key});
+ const OTPVerification({super.key});
 
   @override
   State<OTPVerification> createState() => _OTPVerificationState();
@@ -31,6 +31,7 @@ class _OTPVerificationState extends State<OTPVerification> {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
         title: const PopContainer(),
@@ -47,7 +48,8 @@ class _OTPVerificationState extends State<OTPVerification> {
             } else if (state is AuthSuccess) {
               Navigator.of(context).pop();
               log("success");
-              context.pushReplacement(const CereateNewPasswordScreen());
+           
+              context.pushReplacement( CereateNewPasswordScreen());
             }
           },
           child: Padding(
@@ -106,9 +108,11 @@ class _OTPVerificationState extends State<OTPVerification> {
                   text: 'Verify',
                   onPressed: () {
                     if (isCompleted()) {
-                      int value = int.parse(otpController.text);
+                         AuthCubit.otpCode = int.parse(otpController.text);
+                     
                       context.read<AuthCubit>().checkForgetPassword(AuthParams(
-                            verificationCode: value,
+                        
+                            verificationCode: AuthCubit.otpCode,
                           ));
                     }
                   },

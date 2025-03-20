@@ -12,17 +12,14 @@ import 'package:bookia/features/auth/presentation/pages/password_changed.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CereateNewPasswordScreen extends StatefulWidget {
-  const CereateNewPasswordScreen({super.key});
+class CereateNewPasswordScreen extends StatelessWidget {
+   CereateNewPasswordScreen({super.key, });
+  
 
-  @override
-  State<CereateNewPasswordScreen> createState() =>
-      _CereateNewPasswordScreenState();
-}
-
-class _CereateNewPasswordScreenState extends State<CereateNewPasswordScreen> {
   final _formKey = GlobalKey<FormState>();
+
   final TextEditingController newPasswordController=TextEditingController();
+
   final TextEditingController confirmController=TextEditingController();
 
   @override
@@ -87,7 +84,7 @@ class _CereateNewPasswordScreenState extends State<CereateNewPasswordScreen> {
                         const InputDecoration(hintText: 'Confirm Password'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter your email';
+                        return 'Please Confirm Password';
                       }
                       return null;
                     },
@@ -100,6 +97,7 @@ class _CereateNewPasswordScreenState extends State<CereateNewPasswordScreen> {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                          context.read<AuthCubit>().restPassword(AuthParams(
+                          verificationCode:AuthCubit.otpCode ,
                                 newPassword: newPasswordController.text,
                                 newPasswordConfirmation: confirmController.text,
                               ));

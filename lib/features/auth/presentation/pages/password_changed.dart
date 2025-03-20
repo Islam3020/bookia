@@ -34,7 +34,7 @@ class PasswordChanged extends StatelessWidget {
               CustomButton(
                   text: "Back to Login",
                   onPressed: () {
-                    context.pushReplacement(const LoginView());
+                    context.pushAndRemoveUntil(const LoginView());
                   })
             ],
           ),

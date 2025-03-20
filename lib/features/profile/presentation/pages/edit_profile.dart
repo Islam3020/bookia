@@ -23,7 +23,7 @@ class EditProfile extends StatelessWidget {
           children: [
             const Gap(15),
              Stack(children: [
-              CircleAvatar(
+              const CircleAvatar(
                 radius: 60,
                 backgroundColor: AppColors.greyColor,
               ),
@@ -32,7 +32,7 @@ class EditProfile extends StatelessWidget {
                 bottom: 10,
                 child: Container(
                   padding: const EdgeInsets.all(4),
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     shape: BoxShape.circle, 
                     color: AppColors.backgroundColor
                   ),
