@@ -65,4 +65,20 @@ class AuthRepo {
       return null;
     }
   }
+
+
+   static Future<AuthResponse?> restPassword(AuthParams params) async {
+    try {
+      var response = await DioProvider.post(
+          endpoint: AppEndpoints.restPassword, data: params.toJson());
+      if (response.statusCode == 200) {
+        return AuthResponse.fromJson(response.data);
+      } else {
+        return null;
+      }
+    } on Exception catch (e) {
+      log(e.toString());
+      return null;
+    }
+  }
 }

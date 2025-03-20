@@ -54,4 +54,15 @@ class AuthCubit extends Cubit<AuthState> {
       }
     });
   }
+
+  restPassword(AuthParams params) {
+    emit(AuthLoading());
+    AuthRepo.restPassword(params).then((value) {
+      if(value!=null){
+        emit(AuthSuccess());
+      }else{
+        emit(AuthError("something went wrong"));
+      }
+    });
+  }
 }
