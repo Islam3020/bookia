@@ -106,8 +106,9 @@ class _OTPVerificationState extends State<OTPVerification> {
                   text: 'Verify',
                   onPressed: () {
                     if (isCompleted()) {
+                      int value = int.parse(otpController.text);
                       context.read<AuthCubit>().checkForgetPassword(AuthParams(
-                            verificationCode: otpController.text.,
+                            verificationCode: value,
                           ));
                     }
                   },
