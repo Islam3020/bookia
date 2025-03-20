@@ -46,8 +46,8 @@ class AuthCubit extends Cubit<AuthState> {
 
   checkForgetPassword(AuthParams params) {
     emit(AuthLoading());
-    AuthRepo.forgetPassword(params).then((value) {
-      if (value != null) {
+    AuthRepo.checkForgetPassword(params).then((value) {
+      if (value !=null && value.data?.user?.emailVerified!=false ) {
         emit(AuthSuccess());
       } else {
         emit(AuthError("something went wrong"));

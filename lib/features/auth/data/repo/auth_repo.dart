@@ -55,7 +55,7 @@ class AuthRepo {
     try {
       var response = await DioProvider.post(
           endpoint: AppEndpoints.checkForgetPassword, data: params.toJson());
-      if (response.statusCode == 201) {
+      if (response.statusCode == 200) {
         return AuthResponse.fromJson(response.data);
       } else {
         return null;

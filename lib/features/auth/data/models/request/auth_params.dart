@@ -5,7 +5,12 @@ class AuthParams {
   String? passwordConfirmation;
   int? verificationCode;
 
-  AuthParams({this.name, this.email, this.password, this.passwordConfirmation});
+  AuthParams(
+      {this.name,
+      this.email,
+      this.password,
+      this.passwordConfirmation,
+      this.verificationCode});
   toJson() {
     return {
       "name": name,
