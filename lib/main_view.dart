@@ -1,7 +1,9 @@
 import 'package:bookia/core/constants/assets_manager.dart';
 import 'package:bookia/core/utils/app_colors.dart';
+import 'package:bookia/features/cart/presentation/pages/cart_view.dart';
 import 'package:bookia/features/home/presentation/pages/home_view.dart';
 import 'package:bookia/features/profile/presentation/pages/profile_view.dart';
+import 'package:bookia/features/wishlist/presentation/pages/wishlist_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -15,8 +17,8 @@ class MainView extends StatefulWidget {
 class _MainViewState extends State<MainView> {
   List<Widget> pages = [
     const HomeView(),
-    const HomeView(),
-    const HomeView(),
+    const CartView(),
+    const WishlistView(),
     const ProfileView(),
   ];
   int currentIndex = 0;

@@ -5,8 +5,8 @@ import 'package:bookia/core/services/dio_provider.dart';
 import 'package:bookia/features/home/data/models/get_best_seller_response/get_best_seller_response.dart';
 import 'package:bookia/features/home/data/models/get_slider_response/get_slider_response.dart';
 
-class HomeRepo{
-    static Future<GetBestSellerResponse?> getBestSellers() async {
+class HomeRepo {
+  static Future<GetBestSellerResponse?> getBestSellers() async {
     try {
       var response = await DioProvider.get(
         endpoint: AppEndpoints.bestSellers,

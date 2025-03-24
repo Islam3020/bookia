@@ -13,14 +13,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CereateNewPasswordScreen extends StatelessWidget {
-   CereateNewPasswordScreen({super.key, });
-  
+  CereateNewPasswordScreen({
+    super.key,
+  });
 
   final _formKey = GlobalKey<FormState>();
 
-  final TextEditingController newPasswordController=TextEditingController();
+  final TextEditingController newPasswordController = TextEditingController();
 
-  final TextEditingController confirmController=TextEditingController();
+  final TextEditingController confirmController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -36,16 +37,16 @@ class CereateNewPasswordScreen extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: BlocListener<AuthCubit, AuthState>(
               listener: (context, state) {
-                 if (state is AuthLoading) {
-              showLoadingDialog(context);
-            } else if (state is AuthError) {
-              Navigator.of(context).pop();
-              showErrorToast(context, state.message);
-            } else if (state is AuthSuccess) {
-              Navigator.of(context).pop();
-              log("success");
-              context.pushAndRemoveUntil(const PasswordChanged());
-            }
+                if (state is AuthLoading) {
+                  showLoadingDialog(context);
+                } else if (state is AuthError) {
+                  Navigator.of(context).pop();
+                  showErrorToast(context, state.message);
+                } else if (state is AuthSuccess) {
+                  Navigator.of(context).pop();
+                  log("success");
+                  context.pushAndRemoveUntil(const PasswordChanged());
+                }
               },
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,7 +68,8 @@ class CereateNewPasswordScreen extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  TextFormField(controller: newPasswordController,
+                  TextFormField(
+                    controller: newPasswordController,
                     decoration: const InputDecoration(hintText: 'New Password'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -79,7 +81,8 @@ class CereateNewPasswordScreen extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  TextFormField(controller: confirmController,
+                  TextFormField(
+                    controller: confirmController,
                     decoration:
                         const InputDecoration(hintText: 'Confirm Password'),
                     validator: (value) {
@@ -96,11 +99,11 @@ class CereateNewPasswordScreen extends StatelessWidget {
                     text: 'Reset Password',
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                         context.read<AuthCubit>().restPassword(AuthParams(
-                          verificationCode:AuthCubit.otpCode ,
-                                newPassword: newPasswordController.text,
-                                newPasswordConfirmation: confirmController.text,
-                              ));
+                        context.read<AuthCubit>().restPassword(AuthParams(
+                              verificationCode: AuthCubit.otpCode,
+                              newPassword: newPasswordController.text,
+                              newPasswordConfirmation: confirmController.text,
+                            ));
                       }
                     },
                   ),

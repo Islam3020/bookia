@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
-  static int? otpCode ;
+  static int? otpCode;
 
   register(AuthParams params) {
     emit(AuthLoading());
@@ -48,7 +48,7 @@ class AuthCubit extends Cubit<AuthState> {
   checkForgetPassword(AuthParams params) {
     emit(AuthLoading());
     AuthRepo.checkForgetPassword(params).then((value) {
-      if (value !=null && value.data?.user?.emailVerified!=false ) {
+      if (value != null && value.data?.user?.emailVerified != false) {
         emit(AuthSuccess());
       } else {
         emit(AuthError("something went wrong"));
@@ -59,9 +59,9 @@ class AuthCubit extends Cubit<AuthState> {
   restPassword(AuthParams params) {
     emit(AuthLoading());
     AuthRepo.restPassword(params).then((value) {
-      if(value!=null){
+      if (value != null) {
         emit(AuthSuccess());
-      }else{
+      } else {
         emit(AuthError("something went wrong"));
       }
     });

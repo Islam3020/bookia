@@ -66,8 +66,7 @@ class AuthRepo {
     }
   }
 
-
-   static Future<AuthResponse?> restPassword(AuthParams params) async {
+  static Future<AuthResponse?> restPassword(AuthParams params) async {
     try {
       var response = await DioProvider.post(
           endpoint: AppEndpoints.restPassword, data: params.toJson());

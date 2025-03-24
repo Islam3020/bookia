@@ -22,7 +22,7 @@ class AuthParams {
       "password": password,
       "password_confirmation": passwordConfirmation,
       "verify_code": verificationCode,
-      "new_password" : newPassword,
+      "new_password": newPassword,
       "new_password_confirmation": newPasswordConfirmation
     };
   }

@@ -26,15 +26,16 @@ class BookiaApp extends StatelessWidget {
         theme: ThemeData(
             fontFamily: AppFonts.fontFamily,
             scaffoldBackgroundColor: AppColors.backgroundColor,
-            appBarTheme: const AppBarTheme(
+            appBarTheme: AppBarTheme(
               surfaceTintColor: Colors.transparent,
               backgroundColor: AppColors.backgroundColor,
               elevation: 0,
               titleTextStyle: TextStyle(
-                color: AppColors.darkColor,
-                fontSize: 18,
-              ),
-              iconTheme: IconThemeData(color: AppColors.primaryColor),
+                  color: AppColors.darkColor,
+                  fontSize: 24,
+                  fontFamily: AppFonts.fontFamily,
+                  fontWeight: FontWeight.bold),
+              iconTheme: const IconThemeData(color: AppColors.primaryColor),
             ),
             colorScheme: ColorScheme.fromSeed(
               seedColor: AppColors.primaryColor,

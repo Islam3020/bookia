@@ -58,9 +58,9 @@ class ProfileView extends StatelessWidget {
               ],
             ),
             const Gap(40),
-            
-            Card(elevation: 5,
-            shadowColor: AppColors.darkGray.withOpacity(.5),
+            Card(
+              elevation: 5,
+              shadowColor: AppColors.darkGray.withOpacity(.5),
               child: ListTile(
                 tileColor: AppColors.backgroundColor,
                 title: Text(
@@ -70,11 +70,11 @@ class ProfileView extends StatelessWidget {
                 trailing: const Icon(Icons.arrow_forward_ios_rounded),
               ),
             ),
-           
-           
-            GestureDetector(onTap: () => context.pushTo(const EditProfile()),
-              child: Card(elevation: 5,
-              shadowColor: AppColors.darkGray.withOpacity(.5),
+            GestureDetector(
+              onTap: () => context.pushTo(const EditProfile()),
+              child: Card(
+                elevation: 5,
+                shadowColor: AppColors.darkGray.withOpacity(.5),
                 child: ListTile(
                   tileColor: AppColors.backgroundColor,
                   title: Text(
@@ -85,21 +85,24 @@ class ProfileView extends StatelessWidget {
                 ),
               ),
             ),
-            GestureDetector(onTap: () => context.pushTo(const UpdatePassword()),
-              child: Card(elevation: 5,
-              shadowColor: AppColors.darkGray.withOpacity(.5),
+            GestureDetector(
+              onTap: () => context.pushTo(const UpdatePassword()),
+              child: Card(
+                elevation: 5,
+                shadowColor: AppColors.darkGray.withOpacity(.5),
                 child: ListTile(
                   tileColor: AppColors.backgroundColor,
                   title: Text(
                     "Reset Password",
                     style: getBodyTextStyle(context),
                   ),
-                  trailing:const Icon(Icons.arrow_forward_ios_rounded),
+                  trailing: const Icon(Icons.arrow_forward_ios_rounded),
                 ),
               ),
             ),
-            Card(elevation: 5,
-            shadowColor: AppColors.darkGray.withOpacity(.5),
+            Card(
+              elevation: 5,
+              shadowColor: AppColors.darkGray.withOpacity(.5),
               child: ListTile(
                 tileColor: AppColors.backgroundColor,
                 title: Text(
@@ -109,8 +112,9 @@ class ProfileView extends StatelessWidget {
                 trailing: const Icon(Icons.arrow_forward_ios_rounded),
               ),
             ),
-           Card(elevation: 5,
-            shadowColor: AppColors.darkGray.withOpacity(.5),
+            Card(
+              elevation: 5,
+              shadowColor: AppColors.darkGray.withOpacity(.5),
               child: ListTile(
                 tileColor: AppColors.backgroundColor,
                 title: Text(
@@ -120,8 +124,9 @@ class ProfileView extends StatelessWidget {
                 trailing: const Icon(Icons.arrow_forward_ios_rounded),
               ),
             ),
-            Card(elevation: 5,
-            shadowColor: AppColors.darkGray.withOpacity(.5),
+            Card(
+              elevation: 5,
+              shadowColor: AppColors.darkGray.withOpacity(.5),
               child: ListTile(
                 tileColor: AppColors.backgroundColor,
                 title: Text(

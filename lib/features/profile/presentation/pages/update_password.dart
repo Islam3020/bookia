@@ -26,7 +26,9 @@ class UpdatePassword extends StatelessWidget {
               "New Password",
               style: getHeadLineTextStyle(context),
             ),
-            const Spacer(flex: 1,),
+            const Spacer(
+              flex: 1,
+            ),
             TextFormField(
               decoration: const InputDecoration(hintText: 'Current password'),
             ),
@@ -40,16 +42,20 @@ class UpdatePassword extends StatelessWidget {
             TextFormField(
               decoration: InputDecoration(
                 hintText: 'Confirm password',
-                suffixIcon: IconButton(onPressed: (){},
+                suffixIcon: IconButton(
+                  onPressed: () {},
                   icon: SvgPicture.asset(
                     AssetsManager.eye,
-                    width: 30,height: 30,
+                    width: 30,
+                    height: 30,
                   ),
                 ),
               ),
             ),
-            const Spacer(flex: 3,),
-            CustomButton(text: "Update Password", onPressed: (){})
+            const Spacer(
+              flex: 3,
+            ),
+            CustomButton(text: "Update Password", onPressed: () {})
           ],
         ),
       ),

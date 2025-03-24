@@ -22,7 +22,7 @@ class EditProfile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Gap(15),
-             Stack(children: [
+            Stack(children: [
               const CircleAvatar(
                 radius: 60,
                 backgroundColor: AppColors.greyColor,
@@ -31,12 +31,11 @@ class EditProfile extends StatelessWidget {
                 right: 5,
                 bottom: 10,
                 child: Container(
-                  padding: const EdgeInsets.all(4),
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle, 
-                    color: AppColors.backgroundColor
-                  ),
-                  child: SvgPicture.asset(AssetsManager.camera)),
+                    padding: const EdgeInsets.all(4),
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: AppColors.backgroundColor),
+                    child: SvgPicture.asset(AssetsManager.camera)),
               ),
             ]),
             const Spacer(

@@ -15,7 +15,9 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeCubit(),
+      create: (context) => HomeCubit()
+        ..getBestSeller()
+        ..getSlider(),
       child: Scaffold(
         appBar: AppBar(
           title: SvgPicture.asset(
