@@ -69,8 +69,7 @@ class CartRepo {
     }
   }
 
-  static Future<CartResponse?> updateCart(
-      int cartItemId, int quantity) async {
+  static Future<CartResponse?> updateCart(int cartItemId, int quantity) async {
     try {
       var response = await DioProvider.post(
           endpoint: AppEndpoints.updateCart,

@@ -34,7 +34,7 @@ class WishlistView extends StatelessWidget {
               current is GetWishlistLoadingState ||
               current is GetWishlistErrorState ||
               current is RemoveFromWishlistLoadingState ||
-              current is RemoveFromWishlistErrorState||
+              current is RemoveFromWishlistErrorState ||
               current is AddToCartSuccessState,
           builder: (context, state) {
             if (state is GetWishlistSuccessState) {

@@ -1,22 +1,22 @@
-import 'package:bookia/core/constants/assets_manager.dart';
+
 import 'package:bookia/core/utils/app_colors.dart';
 import 'package:bookia/core/utils/text_styles.dart';
 import 'package:bookia/core/widgets/custom_buttons.dart';
 import 'package:bookia/core/widgets/dialogs.dart';
 import 'package:bookia/core/widgets/pop_container.dart';
-import 'package:bookia/features/home/data/models/get_best_seller_response/product.dart';
-import 'package:bookia/features/home/presentation/cubit/hom_cubit.dart';
 import 'package:bookia/features/home/presentation/cubit/home_state.dart';
+import 'package:bookia/features/search/data/model/get_search_response/product.dart';
+import 'package:bookia/features/search/presentation/cubit/search_cubit.dart';
+import 'package:bookia/features/search/presentation/cubit/search_state.dart';
 import 'package:bookia/features/wishlist/presentation/cubit/wishlist_cubit.dart';
 import 'package:bookia/features/wishlist/presentation/cubit/wishlist_state.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 
-class BookDetails extends StatelessWidget {
-  const BookDetails({super.key, required this.book});
+class SearchDetails extends StatelessWidget {
+  const SearchDetails({super.key, required this.book});
   final Product book;
 
   @override
@@ -24,20 +24,20 @@ class BookDetails extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => HomeCubit(),
+          create: (context) => SearchCubit(),
         ),
         BlocProvider(
           create: (context) => WishlistCubit(),
         ),
       ],
-      child: BlocConsumer<HomeCubit, HomeState>(
+      child: BlocConsumer<SearchCubit, SearchState>(
         listener: (context, state) {
           if (state is AddToWishlistSuccessState) {
             showErrorToast(context, "book added to wishlist");
             Navigator.pop(context);
           } else if (state is AddToWishlistErrorState) {
             Navigator.pop(context);
-            showErrorToast(context, state.error);
+            showErrorToast(context, "something went wrong");
           } else if (state is AddToWishlistLoadingState) {
             showLoadingDialog(context);
           }
@@ -47,13 +47,7 @@ class BookDetails extends StatelessWidget {
             appBar: AppBar(
               title: const PopContainer(),
               automaticallyImplyLeading: false,
-              actions: [
-                IconButton(
-                    onPressed: () {
-                      context.read<HomeCubit>().addToWishlist(book.id ?? 0);
-                    },
-                    icon: SvgPicture.asset(AssetsManager.bookmark))
-              ],
+             
             ),
             body: Padding(
               padding: const EdgeInsets.all(22.0),

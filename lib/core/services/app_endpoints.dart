@@ -15,4 +15,6 @@ class AppEndpoints {
   static const String addToCart = "add-to-cart";
   static const String removeFromCart = "remove-from-cart";
   static const String updateCart = "update-cart";
+
+  static const String search = "products-search";
 }

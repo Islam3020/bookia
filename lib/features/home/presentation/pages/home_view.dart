@@ -1,8 +1,10 @@
 import 'package:bookia/core/constants/assets_manager.dart';
+import 'package:bookia/core/extension/extensions.dart';
 import 'package:bookia/features/home/presentation/cubit/hom_cubit.dart';
 import 'package:bookia/features/home/presentation/widgets/best_seller_books.dart';
 
 import 'package:bookia/features/home/presentation/widgets/home_slider.dart';
+import 'package:bookia/features/search/presentation/pages/search_view.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,7 +33,9 @@ class HomeView extends StatelessWidget {
             ),
             IconButton(
               icon: SvgPicture.asset(AssetsManager.search),
-              onPressed: () {},
+              onPressed: () {
+                context.pushTo(const SearchView());
+              },
             ),
           ],
         ),

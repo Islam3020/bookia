@@ -6,7 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class CartBody extends StatelessWidget {
-  const CartBody({super.key, required this.book, required this.onRemove,required this.onAdd,required this.onMinus});
+  const CartBody(
+      {super.key,
+      required this.book,
+      required this.onRemove,
+      required this.onAdd,
+      required this.onMinus});
   final CartItem? book;
   final Function()? onRemove;
   final Function()? onAdd;
@@ -49,13 +54,20 @@ class CartBody extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  FloatingActionButton.small(elevation: 0,backgroundColor: AppColors.accentColor,
-                  onPressed: onMinus, child: const Icon(Icons.remove)),
+                  FloatingActionButton.small(
+                      elevation: 0,
+                      backgroundColor: AppColors.accentColor,
+                      onPressed: onMinus,
+                      child: const Icon(Icons.remove)),
                   Text(
-                    "${book?.itemQuantity}",style: getBodyTextStyle(context),),
-
-                 FloatingActionButton.small(elevation: 0,backgroundColor: AppColors.accentColor,
-                  onPressed: onAdd, child: const Icon(Icons.add))
+                    "${book?.itemQuantity}",
+                    style: getBodyTextStyle(context),
+                  ),
+                  FloatingActionButton.small(
+                      elevation: 0,
+                      backgroundColor: AppColors.accentColor,
+                      onPressed: onAdd,
+                      child: const Icon(Icons.add))
                 ],
               )
             ],
