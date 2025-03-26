@@ -31,3 +31,13 @@ class UpdateCartErrorState extends CartState {
 
   UpdateCartErrorState(this.message);
 }
+
+class CheckOutLoadingState extends CartState {}
+
+class CheckOutSuccessState extends CartState {}
+
+class CheckOutErrorState extends CartState {
+  final String message;
+
+  CheckOutErrorState({required this.message});
+}

@@ -2,10 +2,11 @@ import 'package:bookia/core/constants/assets_manager.dart';
 import 'package:bookia/core/extension/extensions.dart';
 import 'package:bookia/core/utils/app_colors.dart';
 import 'package:bookia/core/utils/text_styles.dart';
-import 'package:bookia/features/search/data/model/get_search_response/product.dart';
+import 'package:bookia/core/widgets/pop_container.dart';
+import 'package:bookia/features/home/data/models/get_best_seller_response/product.dart';
+import 'package:bookia/features/home/presentation/pages/book_details.dart';
 import 'package:bookia/features/search/presentation/cubit/search_cubit.dart';
 import 'package:bookia/features/search/presentation/cubit/search_state.dart';
-import 'package:bookia/features/search/presentation/widgets/search_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -19,6 +20,7 @@ class SearchView extends StatelessWidget {
     final TextEditingController searchController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
+        leading: const PopContainer(),
         title: TextFormField(
           controller: searchController,
         ),
@@ -34,7 +36,7 @@ class SearchView extends StatelessWidget {
       body: BlocBuilder<SearchCubit, SearchState>(
         builder: (context, state) {
           if (state is SearchLoading) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (state is SearchSuccess) {
             List<Product> products =
                 context.read<SearchCubit>().response?.data?.products ?? [];
@@ -46,7 +48,7 @@ class SearchView extends StatelessWidget {
                       final product = products[index];
                       return GestureDetector(
                         onTap: () {
-                          context.pushTo(SearchDetails(book: product));
+                          context.pushTo(BookDetails(book: product));
                         },
                         child: Container(
                             margin: const EdgeInsets.all(10),
@@ -69,7 +71,8 @@ class SearchView extends StatelessWidget {
                                 const Gap(10),
                                 Expanded(
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Row(
                                         children: [
@@ -82,7 +85,7 @@ class SearchView extends StatelessWidget {
                                       ),
                                       const Gap(10),
                                       Text(
-                                        "${product.price} \$",
+                                        "${product.priceAfterDiscount} \$",
                                         style: getBodyTextStyle(context,
                                             fontSize: 16),
                                       ),
@@ -97,7 +100,7 @@ class SearchView extends StatelessWidget {
           } else if (state is SearchErrorState) {
             return Center(child: Text(state.message));
           }
-          return Center(child: Text("Start typing to search..."));
+          return const Center(child: Text("Start typing to search..."));
         },
       ),
     );

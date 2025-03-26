@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:bookia/features/cart/data/model/cart_response/cart_response.dart';
 import 'package:bookia/features/cart/data/repo/cart_repo.dart';
 import 'package:bookia/features/cart/presentation/cubit/cart_state.dart';
+import 'package:bookia/features/checkout/data/repo/checkout_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CartCubit extends Cubit<CartState> {
@@ -44,6 +45,18 @@ class CartCubit extends Cubit<CartState> {
         log("updated");
       } else {
         emit(UpdateCartErrorState('something went wrong'));
+      }
+    });
+  }
+
+  Future checkOut() async {
+    emit(CheckOutLoadingState());
+    await CheckoutRepo.checkOut().then((value) {
+      if (value) {
+        log("checked out successfully");
+        emit(CheckOutSuccessState());
+      } else {
+        emit(CheckOutErrorState(message: 'something went wrong'));
       }
     });
   }

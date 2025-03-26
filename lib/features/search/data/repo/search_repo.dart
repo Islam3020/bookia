@@ -8,7 +8,7 @@ class SearchRepo {
   static Future<GetSearchResponse?> getSearch(String query) async {
     try {
       var response = await DioProvider.get(
-         endpoint: AppEndpoints.search,
+        endpoint: AppEndpoints.search,
         params: {"name": query},
       );
       if (response.statusCode == 200) {
@@ -20,6 +20,5 @@ class SearchRepo {
       log(e.toString());
       return null;
     }
-
   }
 }

@@ -17,4 +17,7 @@ class AppEndpoints {
   static const String updateCart = "update-cart";
 
   static const String search = "products-search";
+
+  static const String checkout = "checkout";
+  static const String placeOrder = "place-order";
 }

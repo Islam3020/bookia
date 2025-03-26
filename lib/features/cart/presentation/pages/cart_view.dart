@@ -1,9 +1,11 @@
+import 'package:bookia/core/extension/extensions.dart';
 import 'package:bookia/core/utils/text_styles.dart';
 import 'package:bookia/core/widgets/custom_buttons.dart';
 import 'package:bookia/core/widgets/dialogs.dart';
 import 'package:bookia/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:bookia/features/cart/presentation/cubit/cart_state.dart';
 import 'package:bookia/features/cart/presentation/widgets/cart_body.dart';
+import 'package:bookia/features/checkout/presentation/pages/checkout_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -17,11 +19,15 @@ class CartView extends StatelessWidget {
       create: (context) => CartCubit()..getCart(),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Wishlist"),
+          title: const Text("Cart"),
           centerTitle: true,
         ),
         body: BlocConsumer<CartCubit, CartState>(
           listener: (context, state) {
+            if (state is CheckOutSuccessState) {
+              showErrorToast(context, "checkout success");
+              context.pushAndRemoveUntil(const CheckoutView());
+            }
             if (state is RemoveFromCartSuccessState) {
               context.read<CartCubit>().getCart();
             }
@@ -36,7 +42,7 @@ class CartView extends StatelessWidget {
               var total = context.read<CartCubit>().response?.data?.total ?? 0;
               return books.isEmpty
                   ? const Center(
-                      child: Text("No books in wishlist"),
+                      child: Text("No books in cart"),
                     )
                   : Padding(
                       padding: const EdgeInsets.all(22.0),
@@ -95,8 +101,12 @@ class CartView extends StatelessWidget {
                               )
                             ],
                           ),
-                          Gap(10),
-                          CustomButton(text: "Checkout", onPressed: () {})
+                          const Gap(10),
+                          CustomButton(
+                              text: "Checkout",
+                              onPressed: () {
+                                context.read<CartCubit>().checkOut();
+                              })
                         ])
                       ]),
                     );
