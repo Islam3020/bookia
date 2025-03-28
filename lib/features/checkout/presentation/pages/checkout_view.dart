@@ -13,6 +13,7 @@ class CheckoutView extends StatefulWidget {
   const CheckoutView({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _CheckoutViewState createState() => _CheckoutViewState();
 }
 
@@ -29,15 +30,17 @@ class _CheckoutViewState extends State<CheckoutView> {
     return BlocProvider(
       create: (context) => CheckoutCubit(),
       child: Scaffold(
-        appBar: AppBar(title:const Text("Checkout")),
+        appBar: AppBar(title: const Text("Checkout")),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: BlocConsumer<CheckoutCubit, CheckoutState>(
             listener: (context, state) {
               if (state is CheckoutSuccessState) {
                 showErrorToast(context, "Order placed successfully!");
-                
-                context.pushAndRemoveUntil(const MainView(),);
+
+                context.pushAndRemoveUntil(
+                  const MainView(),
+                );
               } else if (state is CheckoutErrorState) {
                 showErrorToast(context, state.message);
               }
@@ -66,7 +69,8 @@ class _CheckoutViewState extends State<CheckoutView> {
                         const Gap(10),
                         TextFormField(
                           controller: addressController,
-                          decoration: const InputDecoration(hintText: "Address"),
+                          decoration:
+                              const InputDecoration(hintText: "Address"),
                           validator: (value) =>
                               value!.isEmpty ? "Enter your address" : null,
                         ),
@@ -80,21 +84,36 @@ class _CheckoutViewState extends State<CheckoutView> {
                         const Gap(10),
                         DropdownButtonFormField<int>(
                           value: selectedGovId,
-                          decoration: const InputDecoration(hintText: "Governorate"),
+                          decoration:
+                              const InputDecoration(hintText: "Governorate"),
                           items: const [
                             DropdownMenuItem(value: 1, child: Text("Cairo")),
                             DropdownMenuItem(value: 2, child: Text("Giza")),
-                            DropdownMenuItem(value: 3, child: Text("Alexandria")),
+                            DropdownMenuItem(
+                                value: 3, child: Text("Alexandria")),
+                            DropdownMenuItem(value: 4, child: Text("Suez")),
+                            DropdownMenuItem(value: 5, child: Text("Aswan")),
+                            DropdownMenuItem(value: 6, child: Text("Luxor")),
+                            DropdownMenuItem(value: 7, child: Text("Qalyubia")),
+                            DropdownMenuItem(
+                                value: 8, child: Text("Port Said")),
+                            DropdownMenuItem(value: 9, child: Text("Sohag")),
+                            DropdownMenuItem(value: 10, child: Text("Asyut")),
+                            DropdownMenuItem(
+                                value: 11, child: Text("Dakahlia")),
+                            DropdownMenuItem(value: 12, child: Text("Fayoum")),
                           ],
-                          onChanged: (value) => setState(() => selectedGovId = value),
-                          validator: (value) => value == null
-                              ? "Select a governorate"
-                              : null,
+                          onChanged: (value) =>
+                              setState(() => selectedGovId = value),
+                          validator: (value) =>
+                              value == null ? "Select a governorate" : null,
                         ),
                         const SizedBox(height: 20),
                         state is CheckoutLoadingState
                             ? const CircularProgressIndicator()
-                            : CustomButton(text: "Place Order", onPressed:  () {
+                            : CustomButton(
+                                text: "Place Order",
+                                onPressed: () {
                                   if (_formKey.currentState!.validate()) {
                                     final params = CheckoutParams(
                                       nameController.text,
@@ -103,9 +122,12 @@ class _CheckoutViewState extends State<CheckoutView> {
                                       addressController.text,
                                       emailController.text,
                                     );
-                                    context.read<CheckoutCubit>().placeOrder(params);
+                                    context
+                                        .read<CheckoutCubit>()
+                                        .placeOrder(params);
                                   }
-                                },),
+                                },
+                              ),
                       ],
                     ),
                   ),

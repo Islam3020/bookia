@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class CheckoutCubit extends Cubit<CheckoutState> {
   CheckoutCubit() : super(CheckoutInitial());
 
-   Future<void> placeOrder(CheckoutParams params) async {
+  Future<void> placeOrder(CheckoutParams params) async {
     emit(CheckoutLoadingState());
     final success = await CheckoutRepo.getCheckout(params);
     if (success) {

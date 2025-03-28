@@ -20,4 +20,10 @@ class AppEndpoints {
 
   static const String checkout = "checkout";
   static const String placeOrder = "place-order";
+
+  static const String profile = "profile";
+  static const String updateProfile = "update-profile";
+  static const String updatePassword = "update-password";
+
+  static const String logout = "logout";
 }

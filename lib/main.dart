@@ -5,6 +5,7 @@ import 'package:bookia/core/utils/app_colors.dart';
 import 'package:bookia/core/utils/text_styles.dart';
 import 'package:bookia/features/auth/presentation/bloc/cubit/auth_cubit.dart';
 import 'package:bookia/features/into/splash.dart';
+import 'package:bookia/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:bookia/features/search/presentation/cubit/search_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,6 +30,7 @@ class BookiaApp extends StatelessWidget {
         BlocProvider(
           create: (context) => SearchCubit(),
         ),
+        BlocProvider(create: (context) => ProfileCubit()..getProfile())
       ],
       child: MaterialApp(
         theme: ThemeData(

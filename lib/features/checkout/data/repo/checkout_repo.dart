@@ -26,10 +26,10 @@ class CheckoutRepo {
   }
 
   static Future<bool> getCheckout(CheckoutParams params) async {
-     try {
+    try {
       var response = await DioProvider.post(
           endpoint: AppEndpoints.placeOrder,
-          data:params.toJson(),
+          data: params.toJson(),
           headers: {
             "Authorization":
                 "Bearer ${LocalHelper.getCachedData(LocalHelper.tokenkey)}"
